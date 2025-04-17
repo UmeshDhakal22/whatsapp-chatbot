@@ -1,11 +1,15 @@
+import os
+
 from fastapi import FastAPI, Query, Request, HTTPException
 import requests
-import json
+from dotenv import load_dotenv
 
+load_dotenv()
 app = FastAPI()
-ACCESS_TOKEN = "EAATlgAY524cBO6KRr2fR0bsphIALT2TZB0ZA0fGqIiFTt0cdqcsAzXfOM1HvyzbPOjldHhDiqZCAE5lHCZCxOZB0YirZAEORBoNv1OeTieqf5bwsZB4zhxJZBveQQttXlJG6ZBZC9NBUDHglCVwGyacUtAgwp7DiznglZAvNyUYNOiDZAY1M1tHQsmFt0aZC4vSXHjZC4HeLQz7IJp5muAZARkpEYO1ZAj0aQ5BUQIljcyFUKhuGTosZD"
-PHONE_NUMBER_ID = "631702670020212"
-VERIFY_TOKEN = "my_secret"
+
+VERIFY_TOKEN = os.getenv("VERIFY_TOKEN")
+PHONE_NUMBER_ID = os.getenv("PHONE_NUMBER_ID")
+ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
 
 @app.get("/webhook")
 def verify_webhook(
